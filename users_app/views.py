@@ -7,6 +7,7 @@ from . import serializers
 from users_app import models
 from rest_framework.exceptions import PermissionDenied
 from django.db import transaction
+from django.core.management import call_command
 
 ###################################################################### Role & Permissions Views ######################################################################
 
@@ -122,4 +123,3 @@ class InvitationListCreateView(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = super().get_queryset()
         return queryset.exclude(from_email = None)
-        
