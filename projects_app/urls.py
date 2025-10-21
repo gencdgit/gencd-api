@@ -7,6 +7,7 @@ router = DefaultRouter()
 # Role & User ViewSets
 router.register(r'roles', views.RoleViewSet, basename='roles')
 router.register(r'users', views.UserViewSet, basename='users')
+router.register(r'project', views.ProjectViewSet, basename='project')
 
 urlpatterns = [
     path('', include(router.urls)),

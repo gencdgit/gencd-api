@@ -1,5 +1,5 @@
 from django.db import connection, transaction
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import post_save, pre_delete, post_delete
 from django.dispatch import receiver
 from . import models
 from django.contrib.auth import get_user_model
@@ -79,3 +79,8 @@ def delete_related_foreign_keys(sender, instance, **kwargs):
             cursor.execute(delete_sql, [user_id])
         
         
+@receiver([post_save, post_delete], sender=models.Repository)
+def update_repository_count(sender, instance, **kwargs):
+    project = instance.project
+    project.repository_count = project.repositories.count()
+    project.save(update_fields=['repository_count'])

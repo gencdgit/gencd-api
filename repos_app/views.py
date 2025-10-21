@@ -8,6 +8,9 @@ from users_app import models
 from rest_framework.exceptions import PermissionDenied
 from django.db import transaction
 
+from rest_framework.permissions import IsAuthenticated
+from .models import Repository
+
 ###################################################################### Role & Permissions Views ######################################################################
 
 
@@ -123,3 +126,8 @@ class InvitationListCreateView(generics.ListCreateAPIView):
         queryset = super().get_queryset()
         return queryset.exclude(from_email = None)
         
+
+class RepositoryViewSet(viewsets.ModelViewSet):
+    queryset = Repository.objects.all().order_by('-created_at')
+    serializer_class = serializers.RepositorySerializer
+    permission_classes = [IsAuthenticated]

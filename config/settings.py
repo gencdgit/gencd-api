@@ -30,7 +30,10 @@ INSTALLED_APPS = [
 
     'auth_app',
     'users_app',
-    'extras_app'
+    'extras_app',
+
+    'projects_app',
+    'repos_app',
 ]
 
 MIDDLEWARE = [
@@ -89,27 +92,27 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(months=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=31),
     "UPDATE_LAST_LOGIN": True,
 }
 
 
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django_redis.cache.RedisCache",
-#         "LOCATION": os.environ.get('REDIS_LOCATION'),
-#         'SOCKET_TIMEOUT': 3,
-#         'SOCKET_CONNECT_TIMEOUT': 3,
-#         'IGNORE_EXCEPTIONS': True,
-#         'CONNECTION_POOL_KWARGS': {
-#             'max_connections': 100,
-#             'timeout': 5  
-#         },
-#         "OPTIONS": {
-#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-#         }
-#     },
-# }
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.environ.get('REDIS_LOCATION'),
+        'SOCKET_TIMEOUT': 3,
+        'SOCKET_CONNECT_TIMEOUT': 3,
+        'IGNORE_EXCEPTIONS': True,
+        'CONNECTION_POOL_KWARGS': {
+            'max_connections': 100,
+            'timeout': 5  
+        },
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+}
 
 INVITATION_EXPIRATION_TIME = timedelta(days=1)
 

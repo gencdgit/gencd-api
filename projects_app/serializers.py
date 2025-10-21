@@ -4,6 +4,7 @@ from users_app import models
 from helper.utils import encode_token
 from helper.exceptions import SmoothException
 from auth_app.models import User, Role
+from .models import Project
 
 
 class RoleSerializer(serializers.ModelSerializer):
@@ -59,3 +60,10 @@ class InvitationSerializer(serializers.ModelSerializer):
         
         invitation = models.Invitation.objects.create(from_email=from_email, to_email=to_email, access_url = access_url, token=token)
         return invitation
+
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = '__all__'
