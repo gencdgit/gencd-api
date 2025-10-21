@@ -1,8 +1,6 @@
 import os
-import json
 from datetime import timedelta
 from pathlib import Path
-from corsheaders.defaults import default_headers
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -25,11 +23,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
 
-    'storages',
     'corsheaders',
 
     'auth_app',
     'users_app',
+    'projects_app',
+    'repos_app',
+    'docs_app',
     'extras_app'
 ]
 
@@ -37,13 +37,11 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'extras_app.middleware.AutoDBMigrationManageMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'extras_app.middleware.LoggerMiddleware'
 ]
 
 CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS').split(', ')
@@ -89,7 +87,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(months=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=30),
     "UPDATE_LAST_LOGIN": True,
 }
 
@@ -133,13 +131,6 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),  
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),  
-        'PORT': os.environ.get('DB_PORT'),  
-    } if os.environ.get('DB_ENGINE') == 'postgresql' else {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

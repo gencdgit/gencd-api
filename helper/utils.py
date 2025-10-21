@@ -4,9 +4,7 @@ from django.conf import settings
 from django.contrib.sessions.backends.db import SessionStore
 from .exceptions import SmoothException
 from datetime import datetime, timedelta
-from django_redis import get_redis_connection
 
-redis_conn = get_redis_connection("default")
 
 
 # Jwt token

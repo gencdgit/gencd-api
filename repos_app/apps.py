@@ -3,8 +3,8 @@ from django.apps import AppConfig
 
 class UsersAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'users_app'
+    name = 'repos_app'
 
-    def ready(self):
-        import users_app.signals
+    # def ready(self):
+    #     import repos_app.signals
         

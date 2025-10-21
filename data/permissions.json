@@ -1,0 +1,84 @@
+[
+  {
+    "slug": "system.all",
+    "name": "System Role - All Permissions",
+    "description": "This role has all permissions and can perform any action in the system.",
+    "category": "system",
+    "request_method": "*"
+  },
+  {
+    "slug": "role.list",
+    "name": "List/View Roles",
+    "description": "Allows listing all roles or viewing a single role",
+    "category": "role",
+    "request_method": "GET"
+  },
+  {
+    "slug": "role.create",
+    "name": "Create Role",
+    "description": "Allows creating a new role",
+    "category": "role",
+    "request_method": "POST"
+  },
+  {
+    "slug": "role.update",
+    "name": "Update Role",
+    "description": "Allows updating existing roles",
+    "category": "role",
+    "request_method": "PATCH"
+  },
+  {
+    "slug": "role.delete",
+    "name": "Delete Role",
+    "description": "Allows deleting existing roles",
+    "category": "role",
+    "request_method": "DELETE"
+  },
+
+
+  {
+    "slug": "role.permissions.view",
+    "name": "View Role Permissions",
+    "description": "Allows viewing permissions assigned to a role",
+    "category": "permissions",
+    "request_method": "GET"
+  },
+  {
+    "slug": "role.permissions.update",
+    "name": "Update Role Permissions",
+    "description": "Allows updating permissions assigned to a role",
+    "category": "permissions",
+    "request_method": "PATCH"
+  },
+
+
+  {
+    "slug": "user.list",
+    "name": "List/View Users",
+    "description": "Allows listing all users or retrieving a single user",
+    "category": "user",
+    "request_method": "GET"
+  },
+  {
+    "slug": "user.invite",
+    "name": "Invite User",
+    "description": "Allows inviting a new user",
+    "category": "user",
+    "request_method": "POST"
+  },
+  {
+    "slug": "user.update",
+    "name": "Update User",
+    "description": "Allows updating an existing user",
+    "category": "user",
+    "request_method": "PATCH"
+  },
+  {
+    "slug": "user.delete",
+    "name": "Delete User",
+    "description": "Allows deleting an existing user",
+    "category": "user",
+    "request_method": "DELETE"
+  }
+
+]
